@@ -51,13 +51,12 @@ router.post('/', (req, res) => {
           let hashedPassword = bcrypt.hashSync(password, saltRounds);
             db.any('INSERT INTO users(firstname, lastname, email, password) VALUES ($1, $2, $3, $4);', [firstname, lastname, email, hashedPassword])
             .then(() => {
-              console.log(newUser);
               res.redirect("/login");
             })
             .catch((err) => {
               // error id user hasn't been inserted into the db
               res.render("pages/error", {
-                message:err.message + err.query
+                message: err.message + err.query
               });
             });
 
