@@ -7,6 +7,7 @@ const loginRouter = require('./routes/loginRouter');
 const signupRouter = require('./routes/signupRouter');
 const logoutRouter = require('./routes/logoutRouter');
 const homeRouter = require('./routes/homeRouter');
+const userRouter = require('./routes/userRouter');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use('/login', loginRouter)
 app.use('/signup', signupRouter)
 app.use('/logout', logoutRouter)
 app.use('/home', homeRouter)
+app.use('/user', userRouter)
 
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`)
