@@ -1,5 +1,5 @@
 <main>
-    <h2>Please enter schedules for the user</h2>   
+    <h2>Please enter schedules for the user: <%= schedules[0].firstname%> <%= schedules[0].lastname%></h2>   
 
     <form novaidate id="scheduleForm" method="post" action="/schedules-management" >    
         <div>
@@ -30,7 +30,7 @@
         </div>
     </form>       
 
-    <h2>User's Existing Schedules</h2>   
+    <h2><%= schedules[0].firstname%> <%= schedules[0].lastname%>'s Existing Schedules</h2>   
 
     <% if(schedules.length < 1) { %>   <!--Get schedules data from homeRouter.js page-->
         <p>No schedules found</p>
@@ -83,6 +83,6 @@
         <%  }  %> 
 
 </main>
-        <!-- <script type="text/javascript" src="../js/scheduleFormValidation.js" defer ></script>-->
+        <script type="text/javascript" src="../js/scheduleFormValidation.js" defer ></script>
  
 

@@ -5,9 +5,12 @@
         <p><strong>Last Name: <%= result[0].lastname %></p>
         <p><strong>Email: <%= result[0].email %></p>
      </div>  
+
+     <div>
     <% if(result.length < 1) { %>  
        <p>No schedules found</p>
        <% } else { %>  
+             <h2><strong><%= result[0].firstname %> <%= result[0].lastname %>'s Existing Schedules</strong></h2>
              <table class="styled-table">
                 <tr>
                     <th>Schedule ID</th>
@@ -36,5 +39,6 @@
              </table>
 
         <%  }  %> 
+     </div> 
   </main>        
 
