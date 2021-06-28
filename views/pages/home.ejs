@@ -1,8 +1,8 @@
 <main>
-    <h1>Current Schedules</h1>   
+    <h2>Current Schedules</h2>   
 
-    <% if(schedules.length < 1) { %>   <!--Get schedules data from index.js page-->
-       <p>No schedules found</p>
+    <% if(schedules.length < 1) { %>   <!--Get schedules data from homeRouter.js page-->
+        <p>No schedules found</p>
        <% } else { %>    
              <table class="styled-table">
                 <tr>
@@ -18,7 +18,7 @@
                     <tr>
                         <td><%= sch.id %></td>
                         <td><%= sch.user_id %></td>
-                        <td><a href="/user"><%= sch.firstname + sch.lastname %></a></td>
+                        <td><a href="/users/<%= sch.user_id %>"><%= sch.firstname %> <%= sch.lastname %></a></td>
                         <td><%= sch.day %></td>
                         <td><%= sch.start_at %></td>
                         <td><%= sch.end_at %></td>
@@ -27,9 +27,4 @@
              </table>
 
         <%  }  %> 
-  </main>        
-
-
-
-
-
+  </main>         
