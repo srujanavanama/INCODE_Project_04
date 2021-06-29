@@ -1,0 +1,40 @@
+<main>
+    <h2>User Information</h2> 
+    <div>
+        <p><strong>First Name: <%= result[0].firstname %> </p>
+        <p><strong>Last Name: <%= result[0].lastname %></p>
+        <p><strong>Email: <%= result[0].email %></p>
+     </div>  
+    <% if(result.length < 1) { %>  
+       <p>No schedules found</p>
+       <% } else { %>  
+             <table class="styled-table">
+                <tr>
+                    <th>Schedule ID</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>    
+                
+                 <% for(let i=0; i<result.length; i++) { %>
+                    <tr>
+                        <td><%= result[i].id %></td>
+                        <td><% switch (result[i].day) {
+                            case 1: %>Monday<% break;
+                            case 2: %>Tuesday<% break;
+                            case 3: %>Wednesday<% break;
+                            case 4: %>Thursday<% break;
+                            case 5: %>Friday<% break;
+                            case 6: %>Saturday<% break;
+                            case 7: %>Sunday<% break;
+                            default: %><%= resut[i].day %><%                     
+                        } %></td>
+                        <td><%= result[i].start_at %></td>
+                        <td><%= result[i].end_at %></td>
+                    </tr>
+                <%  } %>
+             </table>
+
+        <%  }  %> 
+  </main>        
+

@@ -1,0 +1,88 @@
+<main>
+    <h2>Please enter schedules for the user</h2>   
+
+    <form novaidate id="scheduleForm" method="post" action="/schedules-management" >    
+        <div>
+            <label for="day">Day *</label>
+            <select id="day" name="day" required >
+                <% let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %>
+                <option value="">Select Day</option>
+                <% for (let i=0; i<days.length; i++) { %>
+                    <option value= "<%= i+1 %>"> <%= days[i] %></option>
+                <% } %>                      
+            </select>
+            <div class="error" id="dayErr"></div>
+        </div>
+
+        <div>         
+            <label for="start_at">Start Time *</label>                   
+            <input id="start_at" type="time" name="start_at" value="00:00:00">
+            <div class="error" id="startAtErr"></div>
+        </div>
+        <div>        
+            <label for="end_at">End Time *</label>
+            <input id="end_at" type="time" name="end_at" value="00:00:00">
+            <div class="error" id="endAtErr"></div>
+        </div>                   
+
+        <div class="center-button">
+            <button class="btn" id="scheduleButton" type="submit">Submit</button>
+        </div>
+    </form>       
+
+    <h2>User's Existing Schedules</h2>   
+
+    <% if(schedules.length < 1) { %>   <!--Get schedules data from homeRouter.js page-->
+        <p>No schedules found</p>
+       <% } else { %>    
+            <table class="styled-table">
+                <tr>
+                    <th>Schedule ID</th>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>    
+                
+                <%  schedules.forEach((sch) => { %>
+                     <tr>
+                         <td><%= sch.id %></td>
+                         <td>
+                            <% switch (sch.day) {
+                                    case 1: %>Monday<% break;
+                                    case 2: %>Tuesday<% break;
+                                    case 3: %>Wednesday<% break;
+                                    case 4: %>Thursday<% break;
+                                    case 5: %>Friday<% break;
+                                    case 6: %>Saturday<% break;
+                                    case 7: %>Sunday<% break;
+                                    default: %><%=sch.day %><%                     
+                                } %></td>
+                         <td><%= sch.start_at %></td>
+                         <td><%= sch.end_at %></td>
+                         <td>
+                             <!-- HTTP PUT and DELETE methods are not supported through HTML5 forms
+                            Therefore, override HTTP POST method using a header for HTTP DELETE method
+                            _method=DELETE is overriding HTTP POST method and it is defined in the index.js -->
+
+                            <form method="POST" action="/delete/<%= sch.id %>?_method=DELETE"> 
+                                <input type="hidden" name="_method" value="DELETE"/>
+                                <button type="submit"><i class="far fa-trash-alt"></i></button>
+                            </form>
+                        </td>
+                         <!-- <td>
+                             HTTP method overriding is not being supporte through the link in the form
+                            <form method="POST" action="/delete/<%= sch.id %>?_method=DELETE">
+                                <label><a href="/delete/<%= sch.id %>">Delete</a></label>
+                            </form>
+                        </td> -->
+                     </tr>
+                <%  }) %> 
+
+            </table>
+ 
+        <%  }  %> 
+
+</main>
+        <!-- <script type="text/javascript" src="../js/scheduleFormValidation.js" defer ></script>-->
+ 
+
