@@ -8,6 +8,8 @@ router.get('/', redirectToHome, (req,res) => {
     console.log('is connected')
     res.render('pages/login', {
         message: req.query.message,
+        successMessage: req.query.successMessage,
+        login: req.session.loggedin
     })
 })
 
@@ -29,13 +31,14 @@ router.post('/', redirectToHome, (req,res) => {
     // res.send(existingUser)
     const email = existingUser.email;
     const hash = existingUser.password;
-    const userId = existingUser.id;
+    const userId = existingUser.user_id;
 
+    // check if the entered password matches with the database password
     bcrypt.compare(req.body.password, hash, function (err, result) {
       if(result) {
-        // if successful, create session and redirect
-        // res.send(req.session);
-        req.session.userId = existingUser.id;
+        // if successful, create session and redirect to home
+        req.session.userId = userId;
+        req.session.loggedin = true;
         res.redirect('home');
       } else {
         console.log(err)
@@ -45,13 +48,10 @@ router.post('/', redirectToHome, (req,res) => {
   })
   .catch((err) => {
     res.render("pages/error", {
-        message:err.message + err.query
+        message:err.message + err.query,
+        login: req.session.loggedin
       });
   })
-
-  // does password match user password
-
-  // if successfull, create session and redirect
 })
 
 module.exports = router

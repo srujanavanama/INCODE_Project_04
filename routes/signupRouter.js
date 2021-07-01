@@ -9,6 +9,7 @@ const saltRounds = 10;
 router.get('/', (req, res) => {
   res.render("pages/signup", {
     message: req.query.message,
+    login: req.session.loggedin
   });
 });
 
@@ -51,12 +52,13 @@ router.post('/', (req, res) => {
           let hashedPassword = bcrypt.hashSync(password, saltRounds);
             db.any('INSERT INTO users(firstname, lastname, email, password) VALUES ($1, $2, $3, $4);', [firstname, lastname, email, hashedPassword])
             .then(() => {
-              res.redirect("/login");
+              res.redirect("/login?successMessage=Signup%20Successful,%20Please%20Login%20to%20Continue");
             })
             .catch((err) => {
               // error id user hasn't been inserted into the db
               res.render("pages/error", {
-                message: err.message + err.query
+                message: err.message + err.query,
+                login: req.session.loggedin
               });
             });
 
@@ -67,7 +69,8 @@ router.post('/', (req, res) => {
         // Failed to check whether user exists or not
         // return res.send(err.message);
         res.render("pages/error", {
-          message:err.message + err.query
+          message:err.message + err.query,
+          login: req.session.loggedin
         });
       });
   } else {

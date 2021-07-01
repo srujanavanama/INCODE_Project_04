@@ -8,8 +8,8 @@ router.get('/', redirectToLogin, (req, res) => {
           console.log(err)
           res.send(err.message)
       } else {
-          res.clearCookie('mcoffe_sid');
-          res.redirect('/login')
+          res.clearCookie('mrcoffee');
+          res.redirect("/login?successMessage=Logout%20Successful,%20Please%20Login%20Again%20to%20Continue");
       }
   })
   console.log(req.session)
