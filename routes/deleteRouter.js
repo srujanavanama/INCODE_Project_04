@@ -3,8 +3,7 @@ const router = express.Router()
 const db = require('../database')
 const { redirectToLogin } = require('../middleware')
 
-// router.get('/', redirectToLogin, (req, res) => {
-router.delete('/:schid', (req, res) => {
+router.delete('/:schid', redirectToLogin, (req, res) => {
     db.none('DELETE FROM schedules WHERE id = $1;', [req.params.schid])
     .then(() => {  
          res.redirect(req.get('referer'))        //Method-1 to reload the current page
@@ -13,7 +12,8 @@ router.delete('/:schid', (req, res) => {
     
     .catch((err) => {
         res.render("pages/error", {
-            message:err.message + err.query
+            message:err.message + err.query,
+            login: req.session.loggedin
           });
     })
 })

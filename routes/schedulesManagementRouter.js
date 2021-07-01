@@ -3,21 +3,23 @@ const router = express.Router()
 const db = require('../database')
 const { redirectToLogin } = require('../middleware')
 
-// router.get('/', redirectToLogin, (req, res) => {
-router.get('/', (req, res) => {
+router.get('/', redirectToLogin, (req, res) => {
+// router.get('/', (req, res) => {
   //console.log("user id: " + req.session.userId)
   const uid = 3
   //#TODO: Replace uid with req.session.userId
   db.any('SELECT id, day, TO_CHAR(start_at, \'fmHH12:MI AM\') as start_at, TO_CHAR(end_at, \'fmHH12:MI AM\') as end_at FROM schedules WHERE user_id = $1;', [uid])
   .then((result) => {
     res.render('pages/schedulesManagement', {
-        schedules: result
+        schedules: result,
+        login: req.session.loggedin
       })
     })
     
     .catch((err) => {
         res.render("pages/error", {
-            message:err.message + err.query
+            message:err.message + err.query,
+            login: req.session.loggedin
           });
     })
 })
@@ -44,7 +46,8 @@ router.get('/', (req, res) => {
   //   })
   //   .catch((err) => {
   //         res.render("pages/error", {
-  //              message:err.message + err.query
+  //              message:err.message + err.query,
+  //              login: req.session.loggedin
   //         });
   //   })
   // })
