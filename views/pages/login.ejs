@@ -1,5 +1,10 @@
 <form action="/login" method="POST">
     <div>
+        <% if(successMessage) { %>
+            <p style="color: green; font-size: 25px;"><%= successMessage %></p>
+        <% } %>
+    </div>
+    <div>
         <label for="email">Email</label>
         <input id="email" name="email" type="email">
     </div>
@@ -11,4 +16,5 @@
         <% } %>
     </div>
     <button type="submit">Login</button>
+    <div><a href="/signup">New User?Click here to signup</a></div>
 </form>

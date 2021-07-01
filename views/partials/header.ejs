@@ -5,8 +5,12 @@
         ><img class="logo" src="/assets/full_logo_white.png"
                 alt="Full logo dark MR.COFFEE" /></a>
         <div>
-            <a href="/schedules-management">Schedules Management</a>
-            <a href="/logout">Logout</a>
+            <% if(login) { %>
+                <a href="/schedules-management">Schedules Management</a>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/signup">Signup</a>
+            <% } %>
         </div>
     </nav>
 </header>
