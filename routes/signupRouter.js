@@ -50,6 +50,7 @@ router.post('/', (req, res) => {
           //   put data into database
           // newUser password hash
           let hashedPassword = bcrypt.hashSync(password, saltRounds);
+          console.log("Pwd and hashed pwd:" + req.body.password + " " +hashedPassword )
             db.any('INSERT INTO users(firstname, lastname, email, password) VALUES ($1, $2, $3, $4);', [firstname, lastname, email, hashedPassword])
             .then(() => {
               res.redirect("/login?successMessage=Signup%20Successful,%20Please%20Login%20to%20Continue");
