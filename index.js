@@ -1,7 +1,7 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const session = require('express-session');
-const methodOverride = require('method-override');
+const methodOverride = require('method-override'); // to override HTTP POST method to implent HTTP DELETE method
 
 // router files
 const loginRouter = require('./routes/loginRouter');
@@ -21,17 +21,12 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
-// app.get('/login', (req,res) => {
-//     res.render('pages/login')
-// })
-
 // parse post data
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 //Override HTTP POST method for using HTTP DELETE method
 app.use(methodOverride('_method'));
-
 
 // look for static files in the public folder
 app.use(express.static('public'))
@@ -47,8 +42,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
   }));
-
-
 
   //Routes
 app.use('/', loginRouter)

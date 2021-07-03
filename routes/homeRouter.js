@@ -5,7 +5,7 @@ const { redirectToLogin } = require('../middleware')
 
 router.get('/', redirectToLogin, (req, res) => {
   //Get all existing schedules from the schedules table and user name from the user table
-  //TO_CHAR() formats the time
+  //TO_CHAR() formats the time in 12hrs
   console.log(req.session)
      db.any('SELECT u.firstname, u.lastname, s.id, s.user_id, s.day, TO_CHAR(s.start_at, \'fmHH12:MI AM\') as start_at, TO_CHAR(s.end_at, \'fmHH12:MI AM\') as end_at FROM users u, schedules s WHERE u.user_id = s.user_id;')
     .then((result) => {
