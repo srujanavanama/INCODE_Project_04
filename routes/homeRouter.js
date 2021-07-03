@@ -11,7 +11,8 @@ router.get('/', redirectToLogin, (req, res) => {
     .then((result) => {
       res.render('pages/home', {
             schedules: result,   // all schedules and firstname and lastname of user
-            login: req.session.loggedin
+            login: req.session.loggedin,
+            loggedin_user_firstname: req.session.firstname
       })
     })
     

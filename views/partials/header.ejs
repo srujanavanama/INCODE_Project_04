@@ -1,12 +1,12 @@
 <header>
     <nav class="flex space-between">
-        <a 
-        href="/"
-        ><img class="logo" src="/assets/full_logo_white.png"
-                alt="Full logo dark MR.COFFEE" /></a>
+        <a href="/"><img class="logo" src="/assets/full_logo_white.png"
+           alt="Full logo dark MR.COFFEE" />
+        </a>
         <div>
             <% if(login) { %>
-                <a href="/home">Home</a>
+                <a href="/home"><i class="fas fa-user-circle"></i> <%= loggedin_user_firstname%></a>
+                
                 <a href="/schedules-management">Schedules Management</a>
                 <a href="/logout">Logout</a>
             <% } else { %>
@@ -16,3 +16,4 @@
         </div>
     </nav>
 </header>
+

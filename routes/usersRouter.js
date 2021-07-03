@@ -10,7 +10,8 @@ router.get('/:uid', redirectToLogin, (req, res) => {
       .then((result) => {
           res.render('pages/users', {
             result: result,
-            login: req.session.loggedin 
+            login: req.session.loggedin,
+            loggedin_user_firstname: req.session.firstname
          })       
       })
       
