@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r dotenv/config index.js"
   },
-  "author": "",
+  "author": "Ashraf Unnisa Begum and Srujana Vanama",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
