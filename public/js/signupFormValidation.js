@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Signup form validation")
         if (validateName(firstName) && validateName(lastName) && validateEmail(email) && validatePwd(pwd) && validatePwd(confirmPwd) && comparePasswords(pwd, confirmPwd)) {
              console.log("Form validation is successful")
-             e.preventDefault()
         }
         else {
             console.log("Error while validating the form.")
@@ -55,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function validatePwd(pwd) {
-        const pwdRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,32}$/gm;
+// This regular expression macthes password which is 8 characters long including 1 capital letter, 1 small letter, 1 number, and 1 special character
+        const pwdRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{5,32}$/
         if(pwd.value.length < 1 ) {
             if(pwd === pwd) {
                 printError("pwdErr", "Please enter the password");
