@@ -1,12 +1,10 @@
 <form novaidate id="loginForm" action="/login" method="POST">
     <div>
         <% if(successMessage) { %>
-            <!-- <p style="color: green; font-size: 25px;"><%= successMessage %></p> -->
             <p class="error"><%= successMessage %></p>
         <% } %>
    
         <% if(message) { %>
-           <!-- <p style="color: red;"><%= message %></p> -->
            <p class="error"><%= message %></p>
         <% } %>
     </div>

@@ -138,6 +138,7 @@ input:focus {
 
 label {
   text-align: left !important;
+  display: block;
 }
 
 .error {
