@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmPwd = document.querySelector("#confirmPassword")
 
     signupForm.onsubmit = (e) => { 
-        console.log("Signup form validation")
+       // console.log("Signup form validation")
         if (validateName(firstName) && validateName(lastName) && validateEmail(email) && validatePwd(pwd) && validatePwd(confirmPwd) && comparePasswords(pwd, confirmPwd)) {
              console.log("Form validation is successful")
         }

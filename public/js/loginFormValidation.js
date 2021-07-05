@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = document.querySelector("#email")
     const pwd = document.querySelector("#password")
     loginForm.onsubmit = (e) => { 
-        console.log("Login form validation")
+      //  console.log("Login form validation")
         if (validateEmail(email) && validatePwd(pwd)) {
              console.log("Form validation is successful")
             }

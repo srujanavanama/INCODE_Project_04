@@ -5,7 +5,6 @@ const db = require('../database');
 const { redirectToHome } = require('../middleware')
 
 router.get('/', redirectToHome, (req,res) => {
-    console.log('is connected')
     res.render('pages/login', {
         message: req.query.message,
         successMessage: req.query.successMessage,
@@ -43,7 +42,7 @@ router.post('/', redirectToHome, (req,res) => {
         req.session.loggedin = true;
         res.redirect('home');
       } else {
-        console.log(err)
+       // console.log(err)
         res.redirect('/login?message=Incorrect%20login%20details')
       }
     })

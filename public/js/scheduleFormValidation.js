@@ -1,6 +1,6 @@
 // Retrieving the values of form elements 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("testing form")
+    // console.log("testing form")
 
     const scheduleForm = document.querySelector("#scheduleForm")
     const day = document.querySelector("#day")
@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
       
         if(startTimeDate >= endTimeDate ){
             printError("endTimeErr","End time can't be less than the start time")
-            console.log("Start time is greater than the end time")
+            // console.log("Start time is greater than the end time")
             return false
         }else{
             printError("endTimeErr", "");
-            console.log("End time is greater than the start time")
+            // console.log("End time is greater than the start time")
             return true
         }
     } 

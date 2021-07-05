@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  console.log('hello')
+ // console.log('hello')
   // validate form fields
   let namePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ \-']+$/i;
   let passwordPattern =
@@ -30,11 +30,11 @@ router.post('/', (req, res) => {
   let passwordValid = passwordPattern.test(password);
   let emailVallid = emailPattern.test(email);
 
-  console.log(`firstname ${firstname} lastname ${lastname} email ${email}`)
+ // console.log(`firstname ${firstname} lastname ${lastname} email ${email}`)
 
   // check password and confirm password are same
   if (password !== confirmPassword) {
-    console.log(`Password ${password} Confirm ${confirmPassword}`)
+    //console.log(`Password ${password} Confirm ${confirmPassword}`)
     return res.redirect("/signup?message=Passwords%20don't%20match.");
   }
 
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
           //   put data into database
           // newUser password hash
           let hashedPassword = bcrypt.hashSync(password, saltRounds);
-          console.log("Pwd and hashed pwd:" + req.body.password + " " +hashedPassword )
+         // console.log("Pwd and hashed pwd:" + req.body.password + " " +hashedPassword )
             db.any('INSERT INTO users(firstname, lastname, email, password) VALUES ($1, $2, $3, $4);', [firstname, lastname, email, hashedPassword])
             .then(() => {
               res.redirect("/login?successMessage=Signup%20Successful,%20Please%20Login%20to%20Continue");
