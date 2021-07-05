@@ -1,28 +1,36 @@
 <section class="user input grey text">
-<form action="/signup" method="POST" novalidate>
+<form novalidate id="signupForm" action="/signup" method="POST">
+    <div>
+         <% if(message) { %>
+           <p class="error"><%= message %></p>
+         <% } %>
+    </div>
     <div>
         <label for="firstname">First Name *</label>
         <input id="firstname" type="text" name="firstname" required maxlength="30" />
+        <div class="error" id="firstNameErr"></div>
     </div>
     <div>
         <label for="lastname">Last Name *</label>
         <input id="lastname" type="text" name="lastname" required maxlength="30" />
+        <div class="error" id="lastNameErr"></div>
     </div>
     <div>
         <label for="email">Email Address *</label>
         <input id="email" type="email" name="email" required />
+        <div class="error" id="emailErr"></div>
     </div>
     <div>
         <label for="password">Password *</label>
         <input id="password" type="password" name="password" required minlength="8" />
+        <div class="error" id="pwdErr"></div>
     </div>
     <div>
         <label for="confirm-password">Confirm Password *</label>
         <input id="confirm-password" name="confirmPassword" type="password" required minlength="8">
-        <% if(message) { %>
-            <p style="color: red;"><%= message %></p>
-        <% } %>
+        <div class="error" id="confirmPwdErr"></div>
     </div>
     <button class="center" type="submit">Submit</button>
 </form>
 </section>
+<script type="text/javascript" src="../js/signupFormValidation.js"></script>

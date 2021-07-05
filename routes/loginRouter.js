@@ -9,6 +9,7 @@ router.get('/', redirectToHome, (req,res) => {
     res.render('pages/login', {
         message: req.query.message,
         successMessage: req.query.successMessage,
+        loggedin_user: req.session.firstname,
         login: req.session.loggedin
     })
 })
@@ -38,6 +39,8 @@ router.post('/', redirectToHome, (req,res) => {
       if(result) {
         // if successful, create session and redirect to home
         req.session.userId = userId;
+        req.session.firstname = existingUser.firstname
+        req.session.lastname = existingUser.lastname
         req.session.loggedin = true;
         res.redirect('home');
       } else {

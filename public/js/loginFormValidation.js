@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Login form validation")
         if (validateEmail(email) && validatePwd(pwd)) {
              console.log("Form validation is successful")
-             e.preventDefault()
             }
         else {
             console.log("Error while validating the form.")
