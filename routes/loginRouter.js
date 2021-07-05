@@ -9,7 +9,6 @@ router.get('/', redirectToHome, (req,res) => {
     res.render('pages/login', {
         message: req.query.message,
         successMessage: req.query.successMessage,
-        loggedin_user: req.session.firstname,
         login: req.session.loggedin
     })
 })

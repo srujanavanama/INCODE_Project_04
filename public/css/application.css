@@ -145,6 +145,11 @@ label {
   color: red;
 }
 
+.success-message {
+  color: green;
+  font-size: 25px;
+}
+
 /*select {
   font-size: 16px;
   line-height: 1.3;

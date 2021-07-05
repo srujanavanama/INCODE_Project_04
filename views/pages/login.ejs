@@ -1,7 +1,7 @@
-<form novaidate id="loginForm" action="/login" method="POST">
+<form novalidate id="loginForm" action="/login" method="POST">
     <div>
         <% if(successMessage) { %>
-            <p class="error"><%= successMessage %></p>
+            <p class="success-message"><%= successMessage %></p>
         <% } %>
    
         <% if(message) { %>
