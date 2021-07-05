@@ -7,9 +7,6 @@ const { redirectToLogin } = require('../middleware')
  router.get('/', redirectToLogin, (req, res) => {
 db.any('SELECT u.firstname, u.lastname, s.id, s.day, TO_CHAR(s.start_at, \'fmHH12:MI AM\') as start_at, TO_CHAR(s.end_at, \'fmHH12:MI AM\') as end_at FROM users u INNER JOIN schedules s ON u.user_id=s.user_id WHERE u.user_id = $1  ORDER BY day;', [req.session.userId])
 .then((result) => {
-  console.log("Result: " + result)
-  console.log(" req.session.firstname: " +  req.session.firstname)
-  console.log("req.session.lastname: " + req.session.lastname)
     res.render('pages/schedulesManagement', {
         schedules: result,
         login: req.session.loggedin,
