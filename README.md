@@ -4,7 +4,7 @@ INCODE project using NodeJS, EJS, PostgreSQL.
 # Installation
 - Clone the project git reository in your desired folder using the following command on the terminal
 ```
-npm install
+git clone https://github.com/srujanavanama/INCODE_Project_04.git
 ```
 - Create a copy of the '.env.template' file and rename it to '.env', then edit with your database configuration.
 

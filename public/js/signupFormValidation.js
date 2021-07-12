@@ -1,5 +1,5 @@
 // Retrieving the values of form elements 
-document.addEventListener("DOMContentLoaded", () => {
+//document.addEventListener("DOMContentLoaded", () => {
 
     const signupForm = document.querySelector("#signupForm")
     const firstName = document.querySelector("#firstname")
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function validatePwd(pwd) {
 // This regular expression macthes password which is 8 characters long including 1 capital letter, 1 small letter, 1 number, and 1 special character
-        const pwdRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{5,32}$/
+        const pwdRegExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[^a-zA-Z\d]).{8,32}$/
         if(pwd.value.length < 1 ) {
             if(pwd === pwd) {
                 printError("pwdErr", "Please enter the password");
@@ -94,4 +94,4 @@ document.addEventListener("DOMContentLoaded", () => {
     function printError(elemId, hintMsg) {
          document.getElementById(elemId).innerHTML = hintMsg;
     }      
-})
+//})

@@ -62,8 +62,6 @@ router.post('/', (req, res) => {
                 login: req.session.loggedin
               });
             });
-
-          // res.redirect("/login");
         }
       })
       .catch((err) => {

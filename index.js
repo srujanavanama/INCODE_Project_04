@@ -15,7 +15,7 @@ const deleteRouter = require('./routes/deleteRouter');
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // view engine and layouts
 app.set('view engine', 'ejs')
